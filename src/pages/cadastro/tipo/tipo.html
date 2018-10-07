@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Tipo Cadastro
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <logo></logo>
+    <ion-buttons class="botoesTipo">
+        <button ion-button block margin-top *ngFor="let tipo of tipos" (click)="abreCadastro(tipo)">
+          {{tipo.nome}}
+        </button>
+    </ion-buttons>
+</ion-content>

@@ -1,0 +1,114 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Cadastro {{tipo}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <form (submitt)="cadastrar()">
+        <ion-slides #mySlider>
+            <ion-slide>
+                <ion-list>
+                    <ion-item>
+                        <div>
+                            <img [src]="usuario.imagem" id="foto-perfil">
+                            <ion-fab bottom right>
+                                <button ion-fab mini (click)="opcoesCamera()"><ion-icon name="camera"></ion-icon></button>
+                            </ion-fab>
+                        </div>
+                    </ion-item>
+                    <ion-list-header>Dados Pessoais</ion-list-header>
+                    <ion-item>
+                        <ion-label stacked>Nome Completo</ion-label>
+                        <ion-input type="text" name="nome" [(ngModel)]="usuario.nomeCompleto"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Documento</ion-label>
+                        <ion-input type="text" name="documento" [(ngModel)]="usuario.documento"></ion-input>
+                    </ion-item>
+                    <ion-item [hidden]="entidade">
+                        <ion-label float>Segmentos</ion-label>
+                        <ion-select [(ngModel)]="usuario.segmento" multiple="false" name="segmentos" okText="OK" cancelText="Cancelar">
+                        <ion-option *ngFor="let segmento of segmentos" [value]="segmento">{{segmento.nome}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Email</ion-label>
+                        <ion-input type="email" name="email" [(ngModel)]="usuario.email"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Senha</ion-label>
+                        <ion-input type="password" name="senha" [(ngModel)]="usuario.userPassword" ></ion-input>
+                    </ion-item>
+                </ion-list>
+                <div *ngIf="_tipo == 'entidade'">
+                    <ion-buttons end padding-top>
+                        <button ion-button block icon-right type="button" (click)="proximo()">
+                            Próximo
+                            <ion-icon name="arrow-forward"></ion-icon>
+                        </button>           
+                    </ion-buttons>
+                </div>
+                <div *ngIf="_tipo == 'voluntario'">
+                    <ion-buttons end padding-top>
+                        <button ion-button block icon-right type="submit" (click)="cadastrar($event)">
+                            Cadastrar
+                            <ion-icon name="arrow-forward"></ion-icon>
+                        </button>           
+                    </ion-buttons>
+                </div>
+            </ion-slide>
+
+            <ion-slide *ngIf="_tipo == 'entidade'">
+                <ion-list>
+                    <ion-list-header>Endereço</ion-list-header>
+                    <ion-item>
+                        <ion-label stacked>CEP</ion-label>
+                        <ion-input type="number" name="cep" [(ngModel)]="usuario.endCep"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>País</ion-label>
+                        <ion-select [(ngModel)]="usuario.endPais" multiple="false" name="pais" okText="OK" cancelText="Cancelar">
+                        <ion-option *ngFor="let pais of paises" [value]="pais" (ionSelect)="selecionaPais(pais)">{{pais.nome}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Estado</ion-label>
+                        <ion-select [(ngModel)]="usuario.endEstado" multiple="false" name="estado" okText="OK" cancelText="Cancelar">
+                        <ion-option *ngFor="let estado of estados" [value]="estado" (ionSelect)="selecionaEstado(estado)">{{estado.uf}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Cidade</ion-label>
+                        <ion-select [(ngModel)]="usuario.endCidade" multiple="false" name="cidade" okText="OK" cancelText="Cancelar">
+                        <ion-option *ngFor="let cidade of cidades" [value]="cidade">{{cidade.nome}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Bairro</ion-label>
+                        <ion-input type="text" name="bairro" [(ngModel)]="usuario.endBairro"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Logradouro</ion-label>
+                        <ion-input type="text" name="logradouro" [(ngModel)]="usuario.endLogradouro"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Número</ion-label>
+                        <ion-input type="number" name="numero" [(ngModel)]="usuario.endNumero"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Complemento</ion-label>
+                        <ion-input type="text" name="complemento" [(ngModel)]="usuario.endComplemento"></ion-input>
+                    </ion-item>
+                    <ion-buttons end padding-top>
+                        <button ion-button block icon-right type="submit" (click)="cadastrar()">
+                            Cadastrar
+                            <ion-icon name="arrow-forward"></ion-icon>
+                        </button>           
+                    </ion-buttons>
+                </ion-list>
+            </ion-slide>
+        </ion-slides>
+    </form>
+</ion-content>

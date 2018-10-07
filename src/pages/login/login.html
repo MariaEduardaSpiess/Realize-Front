@@ -1,0 +1,27 @@
+<ion-content padding>
+      
+    <logo></logo>
+      
+    <form name="login">
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text" name="email" [(ngModel)]="userData.username" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Senha</ion-label>
+            <ion-input type="password" name="password" [(ngModel)]="userData.userpassword" required></ion-input>
+        </ion-item>
+
+        <ion-buttons end padding-top>
+            <button ion-button block icon-right type="submit" (click)="validaLogin()" >
+                Entrar
+                <ion-icon name="log-in"></ion-icon>
+            </button>
+            <button ion-button clear block small (click)="trocaSenha()">Esqueci minha senha</button>                     
+        </ion-buttons>
+    </form>
+    <ion-footer>
+        <button ion-button clear block (click)="abreTipo()">Cadastrar-se</button>            
+    </ion-footer>
+</ion-content>

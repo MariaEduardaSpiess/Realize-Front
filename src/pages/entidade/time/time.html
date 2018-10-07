@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Time de Voluntários</ion-title>
+    </ion-navbar>
+</ion-header>
+    
+<ion-content>
+    <ion-list>
+        <ion-item *ngIf="aviso != ''" id="aviso" text-wrap='false'>
+            <p>{{aviso}}</p>
+        </ion-item>
+        <ion-item *ngFor="let timeVoluntario of timeVoluntarios">
+            <h2>{{timeVoluntario.voluntario.nomeCompleto}}</h2>
+            <ion-icon item-end name="close" (click)="deletaIntegrante(timeVoluntario)"></ion-icon>
+        </ion-item>
+    </ion-list>
+    <ion-footer>
+        <button ion-button block (click)="addVoluntario()">Adicionar Integrante</button>
+    </ion-footer>
+</ion-content>
+      

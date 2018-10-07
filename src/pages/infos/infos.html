@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Informações do Evento</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-item>
+            <img [src]="evento.imagem" id="fotoEvento">
+            <ion-fab bottom right [hidden]="!entidade">
+                <button ion-fab mini (click)="opcoesCamera()"><ion-icon name="camera"></ion-icon></button>
+            </ion-fab>
+        </ion-item>
+        <ion-card-content>
+            <ion-row>
+                <ion-col col-2>
+                    <div text-center >
+                        <h6>{{evento.data | date: 'MMM'}}</h6>
+                        <h1>{{evento.data | date: 'dd'}}</h1>  
+                    </div>
+                </ion-col>
+                <ion-col col-8>
+                    <h2>{{evento.titulo}}</h2>        
+                    <p>Criado por: <a (click)="abrePerfil(evento)">{{evento.entidade.nomeCompleto}}</a></p>
+                </ion-col>
+                <ion-col col-2>
+                    <button ion-button clear icon-only (click)="showConfirm()">
+                        <ion-icon [name]="edit"></ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
+            <hr>
+            <ion-item>
+                <ion-icon name="alarm" item-start small></ion-icon>
+                <p>{{evento.data | date: 'dd/MM/yyyy' }} às {{evento.hora}}</p>
+            </ion-item>
+            <ion-item text-wrap="false">
+                <ion-icon name="pin" item-start small></ion-icon>
+                <p>{{endCompleto}}, {{evento.endComplemento}}</p>
+            </ion-item>
+
+            <div #map id="map"></div>
+            <br>
+            <div id="descrição" padding>
+                <p>{{evento.descricao}}</p>
+            </div>
+            <button ion-button block (click)="showConfirm()" [hidden]="participando == true">Participar!</button>
+            <button ion-button block (click)="deletaEvento()" [hidden]="edit != 'create'">Deletar Evento</button>            
+        </ion-card-content>
+    </ion-card>
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Perfil</ion-title>
+        <ion-buttons end>
+            <button ion-button clear (click)="sair()">Sair</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <div>
+                <img [src]="usuario.imagem" id="foto-perfil">
+                <ion-fab bottom right top [hidden]="visitante">
+                    <button ion-fab mini (click)="presentModal()"><ion-icon name="create"></ion-icon></button>
+                    <button ion-fab mini (click)="opcoesCamera()"><ion-icon name="camera"></ion-icon></button>
+                </ion-fab>
+            </div>
+        </ion-item>
+        <ion-item text-center>
+            <h2>{{usuario.nomeCompleto}}</h2>
+        </ion-item>
+    
+        <ion-item text-wrap text-center margin-top *ngIf="usuario.descricao == null || visitante == true">
+            <p>Adicione uma descrição aqui!</p>
+            <button ion-button icon-only clear block (click)="presentModal()"><ion-icon name="ios-more"></ion-icon></button>
+        </ion-item>
+        <ion-item [hidden]="usuario.descricao == null" text-wrap text-center>
+            <p>{{usuario.descricao}}</p>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="usuario.tipo == 'V'">
+        
+        <ion-list-header>Histórico</ion-list-header>
+        
+        <ion-item *ngIf="aviso != null" text-wrap='true'>
+            <p>{{aviso}}</p>
+        </ion-item>
+        
+        <ion-item *ngFor="let evento of eventos" (click)="abreInfos(evento)">
+            
+            <h2>{{evento.titulo}}</h2>
+            <p>Criado por: {{evento.entidade.nomeCompleto}}</p>
+            <ion-col col-2 item-end>
+                <div text-center >
+                    <p>{{evento.data | date: 'MMM'}}</p>
+                    <h4>{{evento.data | date: 'dd'}}</h4> 
+                </div>
+            </ion-col>
+        </ion-item>
+    </ion-list>    
+    
+</ion-content>

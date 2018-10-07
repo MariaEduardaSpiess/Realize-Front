@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Meus Eventos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item *ngIf="aviso != ''" id="aviso" text-wrap='false'>
+      <p>{{aviso}}</p>
+  </ion-item>
+  <ion-card *ngFor="let evento of eventos" (click)="abreInfos(evento)">
+    <img [src]="evento.imagem" id="fotoEvento">
+    <ion-card-content>
+        <ion-row>
+            <ion-col col-10>
+                <h2>{{evento.titulo}}</h2>        
+                <p>Criado por: {{evento.entidade.nomeCompleto}}</p>
+            </ion-col>
+            <ion-col col-2>
+                <div text-center >
+                <h6>{{evento.data | date: 'MMM'}}</h6>
+                <h1>{{evento.data | date: 'dd'}}</h1> 
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

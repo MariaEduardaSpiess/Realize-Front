@@ -1,0 +1,110 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Criar Evento
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <form (submitt)="criar()">
+        <ion-slides #mySlider>
+            <ion-slide>
+                <ion-list>
+                    <ion-item>
+                        <div>
+                            <img [src]="url" id="fotoEvento">
+                            <ion-fab bottom right>
+                                <button ion-fab mini (click)="opcoesCamera()"><ion-icon name="camera"></ion-icon></button>
+                            </ion-fab>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Título</ion-label>
+                        <ion-input type="text" name="titulo" [(ngModel)]="evento.titulo" ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Data</ion-label>
+                        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="evento.data" name="data"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Horário</ion-label>
+                        <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.hora" name="horario"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Segmentos</ion-label>
+                        <ion-select [(ngModel)]="evento.segmento" multiple="false" name="segmentos" okText="OK" cancelText="Cancelar">
+                        <ion-option *ngFor="let segmento of segmentos" [value]="segmento">{{segmento.nome}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Entrevista</ion-label>
+                        <ion-checkbox [(ngModel)]="evento.selecao" name="selecao"></ion-checkbox>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Vagas</ion-label>
+                        <ion-input type="number" name="vagas" [(ngModel)]="evento.vagas"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Descrição</ion-label>
+                        <ion-textarea rows="4" type="text" name="descricao" [(ngModel)]="evento.descricao"></ion-textarea>
+                    </ion-item>
+                    <ion-buttons end padding-top>
+                        <button ion-button block icon-right type="button" (click)="proximo()">
+                            Próximo
+                            <ion-icon name="arrow-forward"></ion-icon>
+                        </button>           
+                    </ion-buttons>
+                </ion-list>
+            </ion-slide>
+            <ion-slide>
+                <ion-list>
+                    <ion-list-header>Endereço</ion-list-header>
+                    <ion-item>
+                        <ion-label stacked>CEP</ion-label>
+                        <ion-input type="number" name="cep" [(ngModel)]="evento.endCep"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>País</ion-label>
+                        <ion-select [(ngModel)]="evento.endPais" multiple="false" name="pais" okText="OK" cancelText="Cancelar">
+                        <ion-option *ngFor="let pais of paises" [value]="pais">{{pais.nome}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Estado</ion-label>
+                        <ion-select [(ngModel)]="evento.endEstado" multiple="false" name="estado" okText="OK" cancelText="Cancelar">
+                        <ion-option *ngFor="let estado of estados" [value]="estado">{{estado.nome}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Cidade</ion-label>
+                        <ion-select [(ngModel)]="evento.endCidade" multiple="false" name="cidade" okText="OK" cancelText="Cancelar">
+                        <ion-option *ngFor="let cidade of cidades" [value]="pais">{{cidade.nome}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Bairro</ion-label>
+                        <ion-input type="text" name="bairro" [(ngModel)]="evento.endBairro"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Logradouro</ion-label>
+                        <ion-input type="text" name="logradouro" [(ngModel)]="evento.endLogradouro"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Número</ion-label>
+                        <ion-input type="number" name="numero" [(ngModel)]="evento.endNumero"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>Complemento</ion-label>
+                        <ion-input type="text" name="complemento" [(ngModel)]="evento.endComplemento"></ion-input>
+                    </ion-item>
+                    <ion-buttons end padding-top>
+                        <button ion-button block icon-right type="submit">
+                            Criar
+                            <ion-icon name="arrow-forward"></ion-icon>
+                        </button>           
+                    </ion-buttons>
+                </ion-list>
+            </ion-slide>
+        </ion-slides>
+    </form>
+</ion-content>

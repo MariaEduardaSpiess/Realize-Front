@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Editar Evento
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+    <form (submitt)="criar()">
+        <!-- <ion-item *ngIf="url">
+            <div id="foto-perfil">
+                <img [src]="url">
+                <ion-fab bottom right>
+                    <button ion-fab mini><ion-icon name="camera" (click)="opcoesCamera()"></ion-icon></button>
+                </ion-fab>
+            </div>
+        </ion-item> -->
+
+        <!--<ion-card>
+            <ion-card-content>
+                <img [src]="url">
+                <ion-row no-padding>
+                    <ion-col>
+                        <ion-fab bottom right edge>
+                            <button ion-fab mini (click)="opcoesCamera()"><ion-icon name="camera"></ion-icon></button>
+                        </ion-fab>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>-->
+        <!-- <ion-item>
+            <ion-img src="../../../assets/img/cadEvento.png" ></ion-img>            
+        </ion-item> -->
+        <ion-item>
+            <ion-label stacked>Título</ion-label>
+            <ion-input type="text" name="titulo" [(ngModel)]="evento.titulo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Data</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="evento.data" name="data"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Horário</ion-label>
+            <ion-datetime displayFormat="HH:mm" [(ngModel)]="evento.hora" name="horario"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>Segmentos</ion-label>
+            <ion-select [(ngModel)]="evento.segmento" multiple="false" name="segmentos" okText="OK" cancelText="Cancelar">
+                <ion-option *ngFor="let segmento of segmentos" [value]="segmento">{{segmento.nome}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Entrevista</ion-label>
+            <ion-checkbox [(ngModel)]="evento.selecao" name="selecao"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Vagas</ion-label>
+            <ion-input type="number" name="vagas" [(ngModel)]="evento.vagas"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Descrição</ion-label>
+            <ion-textarea type="text" name="descricao" [(ngModel)]="evento.descricao" rows="5"></ion-textarea>
+        </ion-item>
+        <ion-buttons end padding-top>
+            <button ion-button block icon-right type="submit">
+                Salvar
+                <ion-icon name="arrow-forward"></ion-icon>
+            </button>           
+        </ion-buttons>
+    </form>
+</ion-content>

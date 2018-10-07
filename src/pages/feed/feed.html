@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+      <ion-searchbar
+      [showCancelButton]="shouldShowCancel"
+      (ionInput)="getItems($event)"
+      (ionCancel)="onCancel()"
+      placeholder="Pesquisar...">
+    </ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let evento of eventos">
+      <img [src]="evento.imagem" id="fotoEvento">
+      <ion-card-content>
+          <ion-row>
+              <ion-col col-10>
+                  <h2>{{evento.titulo}}</h2>        
+                  <p>{{evento.data | date: 'dd/MM/yyyy'}} - {{evento.entidade.nomeCompleto}}</p>
+              </ion-col>
+              <ion-col col-2>
+                  <div text-center >
+                  <h6>{{evento.data | date: 'MMM'}}</h6>
+                  <h1>{{evento.data | date: 'dd'}}</h1> 
+                  </div>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <button ion-button block (click)="abreInfos(evento)">Informações</button>
+          </ion-row>
+      </ion-card-content>
+  </ion-card>
+</ion-content>

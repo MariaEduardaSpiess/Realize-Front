@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Redefinição de Senha</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    
+    <logo></logo>
+
+    <form name="trocaSenha">
+        <ion-item text-wrap="false">
+            <p>Digite o seu email para que possamos enviar à você um email contendo sua senha.</p>
+        </ion-item>
+        <ion-item>
+            <ion-input type="email" name="email" [(ngModel)]="email" required placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-buttons margin-top>
+            <button ion-button block icon-right type="submit" (click)="trocaSenha()" >
+                Enviar
+                <ion-icon name="arrow-right"></ion-icon>
+            </button>         
+        </ion-buttons>
+    </form>
+</ion-content>

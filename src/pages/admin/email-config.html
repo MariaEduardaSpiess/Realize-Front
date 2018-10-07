@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Entidades para Aprovação</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <form name="email-config">
+        <ion-item>
+            <ion-label stacked>Host Name</ion-label>
+            <ion-input type="text" name="host" [(ngModel)]="cfgEmail.hostName"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>SMTP Port</ion-label>
+            <ion-input type="number" name="smtp" [(ngModel)]="cfgEmail.smtpPort"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Charset</ion-label>
+            <ion-input type="text" name="charset" [(ngModel)]="cfgEmail.charSet"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Protocolo de Segurança</ion-label>
+            <ion-select [(ngModel)]="protocolo" name="protocolo">
+                <ion-option [value]="SSL">SSL</ion-option>
+                <ion-option [value]="TLS">TLS</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Mail From</ion-label>
+            <ion-input type="text" name="mailFrom" [(ngModel)]="cfgEmail.mailFrom"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Mail Adm</ion-label>
+            <ion-input type="text" name="mailAdm" [(ngModel)]="cfgEmail.mailAdm"></ion-input>
+        <ion-item>
+            <ion-label stacked>User Name</ion-label>
+            <ion-input type="text" name="userName" [(ngModel)]="cfgEmail.userName"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Password</ion-label>
+            <ion-input type="text" name="password" [(ngModel)]="cfgEmail.password"></ion-input>
+        </ion-item>
+        </ion-item>
+        <ion-buttons margin-top>
+            <button ion-button block icon-right type="submit" (click)="salvarCfg()" >
+                Salvar Alteração
+                <ion-icon name="arrow-right"></ion-icon>
+            </button>         
+        </ion-buttons>
+    </form>
+</ion-content>
