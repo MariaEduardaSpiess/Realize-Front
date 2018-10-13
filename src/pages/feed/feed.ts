@@ -1,4 +1,3 @@
-import { DomSanitizer } from '@angular/platform-browser';
 import { Loading } from './../../domain/loading/loading';
 import { CameraService } from './../../domain/camera/camera-service';
 import { Alerta } from './../../domain/alerta/alerta';
@@ -22,8 +21,7 @@ export class FeedPage {
               private _service: EventoService,
               private _alerta: Alerta,
               private _cameraService: CameraService,
-              private _loadingCtrl: Loading,
-              private _sanitizer: DomSanitizer) {
+              private _loadingCtrl: Loading) {
 
     this._loading = this._loadingCtrl.exibirLoading();
   }
@@ -69,9 +67,9 @@ export class FeedPage {
           console.log(this.eventos);
         });
         this._loading.dismiss();
-      }, err => {
-        this._alerta.exibeAlerta('Erro','Algo inesperado aconteceu.');
-      });
+      }, () => {
+          this._alerta.exibeAlerta('Erro', 'Algo inesperado aconteceu.');
+        });
   }
 
   abreInfos(evento){

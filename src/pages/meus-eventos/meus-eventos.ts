@@ -1,6 +1,5 @@
-import { PerfilPage } from './../perfil/perfil';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Alerta } from './../../domain/alerta/alerta';
 import { UsuarioService } from './../../domain/usuario/usuario-service';
 import { InfosPage } from './../infos/infos';
@@ -19,7 +18,7 @@ export class MeusEventosPage {
   public tipo: string;
   public aviso: string = '';
 
-  constructor(public navCtrl: NavController, private _eventoService: EventoService, private _usuarioService: UsuarioService, private _alerta: Alerta, private _navParams: NavParams) {
+  constructor(public navCtrl: NavController, private _eventoService: EventoService, private _usuarioService: UsuarioService, private _alerta: Alerta) {
 
     this.eventos = new Array<Evento>();
     
@@ -72,8 +71,8 @@ export class MeusEventosPage {
             }
           }
         }
-      }, err => {
-        this._alerta.exibeAlerta('Erro','Algo inesperado aconteceu.');
-      });
+      }, () => {
+          this._alerta.exibeAlerta('Erro', 'Algo inesperado aconteceu.');
+        });
   }
 }

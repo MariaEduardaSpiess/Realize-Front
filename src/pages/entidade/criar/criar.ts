@@ -2,10 +2,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CameraService } from './../../../domain/camera/camera-service';
 import { Component, ViewChild } from '@angular/core';
 import { NavParams, NavController, Slides, ActionSheetController } from 'ionic-angular';
-import { Http } from '@angular/http';
 import { MeusEventosPage } from './../../meus-eventos/meus-eventos';
 import { Evento } from '../../../domain/evento/evento';
-import { UsuarioService } from './../../../domain/usuario/usuario-service';
 import { SegmentoService } from '../../../domain/segmento/segmento-service';
 import { EventoService } from '../../../domain/evento/evento.service';
 import { Alerta } from '../../../domain/alerta/alerta';
@@ -28,11 +26,9 @@ export class CriarPage {
 
   constructor(public navParams: NavParams, 
               public navCtrl: NavController, 
-              private _http: Http, 
               private _alerta: Alerta,
               private _segmentoService: SegmentoService,
               private _eventoService: EventoService,
-              private _usuarioService: UsuarioService,
               private _cameraService: CameraService,
               private _sanitizer: DomSanitizer,
               private _actionSheetCtrl: ActionSheetController){

@@ -1,5 +1,3 @@
-import { NavController } from 'ionic-angular';
-import { Alerta } from './../../domain/alerta/alerta';
 import { UsuarioService } from './../../domain/usuario/usuario-service';
 import { Component } from '@angular/core';
 
@@ -11,7 +9,7 @@ export class TrocaSenhaPage{
 
     public email: string = '';
 
-    constructor(private _service: UsuarioService, private _alerta: Alerta, private _navCtrl: NavController){
+    constructor(private _service: UsuarioService){
 
     }
     

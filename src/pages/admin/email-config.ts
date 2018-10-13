@@ -1,9 +1,6 @@
 import { Alerta } from './../../domain/alerta/alerta';
 import { ApiConfig } from './../../domain/api/api-config';
-import { PerfilPage } from './../perfil/perfil';
-import { Usuario } from './../../domain/usuario/usuario';
 import { Http, Headers } from '@angular/http';
-import { NavParams, NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 @Component({
@@ -28,7 +25,7 @@ export class EmailConfigPage{
         mailAdm: ''
     }
 
-    constructor(private _http: Http, private _navCtrl: NavController, private _apiCfg: ApiConfig, private _alerta: Alerta){
+    constructor(private _http: Http, private _apiCfg: ApiConfig, private _alerta: Alerta){
         
         let token = localStorage.getItem('token');
 

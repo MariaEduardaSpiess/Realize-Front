@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
-import { Http } from '@angular/http';
 import { Evento } from '../../../domain/evento/evento';
-import { UsuarioService } from './../../../domain/usuario/usuario-service';
 import { SegmentoService } from '../../../domain/segmento/segmento-service';
 import { EventoService } from '../../../domain/evento/evento.service';
 import { Alerta } from '../../../domain/alerta/alerta';
@@ -23,11 +21,9 @@ export class EditarEventoPage {
 
   constructor(public navParams: NavParams, 
               public navCtrl: NavController, 
-              private _http: Http, 
               private _alerta: Alerta,
               private _segmentoService: SegmentoService,
-              private _eventoService: EventoService,
-              private _usuarioService: UsuarioService){
+              private _eventoService: EventoService){
     
     this.evento = this.navParams.get('evento');
     

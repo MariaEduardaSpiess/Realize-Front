@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
 import { ModalController, NavController } from 'ionic-angular';
 import { Add } from './add/add';
 import { TimeService } from './time-service';
@@ -17,7 +16,7 @@ export class TimePage {
   public voluntariosLoaded;
   public aviso: string = '';
   
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, private _http: Http, private _service: TimeService, private _alerta: Alerta) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, private _service: TimeService, private _alerta: Alerta) {
     
       this.listaVoluntarios();
   }
@@ -32,14 +31,14 @@ export class TimePage {
 
   deletaIntegrante(voluntario){
     this._service.deletaVoluntario(voluntario)
-      .subscribe(res => {
-        let indiceVoluntario = this.voluntariosLoaded.indexOf(voluntario);
-        this.voluntariosLoaded.splice(indiceVoluntario, 1);
-        this.timeVoluntarios = this.voluntariosLoaded;
-        this._alerta.exibeAlerta('Sucesso!','Integrante deletado com sucesso!');
-      }, err => {
-        this._alerta.exibeAlerta('Erro','O integrante não pôde ser deletado.');
-      })
+      .subscribe(() => {
+          let indiceVoluntario = this.voluntariosLoaded.indexOf(voluntario);
+          this.voluntariosLoaded.splice(indiceVoluntario, 1);
+          this.timeVoluntarios = this.voluntariosLoaded;
+          this._alerta.exibeAlerta('Sucesso!', 'Integrante deletado com sucesso!');
+        }, () => {
+          this._alerta.exibeAlerta('Erro', 'O integrante não pôde ser deletado.');
+        })
   }
 
   listaVoluntarios(){

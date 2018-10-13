@@ -1,9 +1,8 @@
 import { Alerta } from './../../domain/alerta/alerta';
 import { ApiConfig } from './../../domain/api/api-config';
 import { PerfilPage } from './../perfil/perfil';
-import { Usuario } from './../../domain/usuario/usuario';
 import { Http, Headers } from '@angular/http';
-import { NavParams, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 @Component({

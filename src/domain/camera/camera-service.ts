@@ -1,17 +1,13 @@
-import { Loading } from './../loading/loading';
 import { ApiConfig } from './../api/api-config';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { ActionSheetController } from 'ionic-angular';
 
 @Injectable()
 export class CameraService {
 
     private _headers: Headers;
     private _token: string;
-    private _loading;
 
     constructor(private _http: Http, private _camera: Camera, private _apiCfg: ApiConfig){
 
